@@ -10,10 +10,7 @@ namespace censusAnalyzerTest
         public long Population { get; set; }
         public long AreaInSqKm { get; set; }
         public long DensityPerSqKm { get; set; }
-        public int SrNo { get; set; }
-        public string StateName { get; set; }
-        public int TIN { get; set; }
-        public string StateCode { get; set; }
+        
 
         public IndianCensusDto()
         {
@@ -27,12 +24,6 @@ namespace censusAnalyzerTest
             this.DensityPerSqKm = indianStateCensusData.DensityPerSqKm;
         }
 
-        public void MapIndianCensusDto(IndianStateCodeClass indianStateCensusData)
-        {
-            this.SrNo = indianStateCensusData.SrNo;
-            this.StateName = indianStateCensusData.StateName;
-            this.StateCode = indianStateCensusData.StateCode;
-            this.TIN = indianStateCensusData.TIN;
-        }
+      
     }
 }
