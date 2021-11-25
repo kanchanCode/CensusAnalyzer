@@ -15,21 +15,20 @@ namespace censusAnalyzerTest
 
         }
 
+          List<IndianStateCensusDataClass> indianCensusDataList;
+        Dictionary<string, IndianCensusDto> indianCensusDto = new Dictionary<string, IndianCensusDto>();
         public List<IndianStateCensusDataClass> loadCensusData(string filePath)
         {
 
             StreamReader streamReader = File.OpenText(filePath);
             CsvReader csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture);
-            return csvReader.GetRecords<IndianStateCensusDataClass>().ToList();
-
+            indianCensusDataList = csvReader.GetRecords<IndianStateCensusDataClass>().ToList();
+            foreach(var element in indianCensusDataList)
+            {
+                indianCensusDto.Add(element.State, new IndianCensusDto(element));
+            }
+            return indianCensusDataList;
         }
-        public List<IndianStateCodeClass> loadCensusStateCode(string filePath)
-        {
-
-            StreamReader streamReader = File.OpenText(filePath);
-            CsvReader csvReader = new CsvReader(streamReader, CultureInfo.InvariantCulture);
-            return csvReader.GetRecords<IndianStateCodeClass>().ToList();
-
-        }
+       
     }
 }
